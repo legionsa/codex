@@ -12,7 +12,7 @@ uploads:
     accessKeyId: "my-access-key"
     secretAccessKey: "my-secret-key"
 frontend:
-  title: "CodeX Docs"
+  title: "Cockpit Design System"
   description: "Free Docs app powered by Editor.js ecosystemt"
   startPage: ""
   misprintsChatId: "12344564"
