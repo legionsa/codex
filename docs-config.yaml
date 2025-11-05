@@ -4,13 +4,6 @@ uploads:
   driver: "local"
   local:
     path: "./uploads"
-  s3:
-    bucket: "my-bucket"
-    region: "eu-central-1"
-    baseUrl: "http://docs-static.codex.so.s3-website.eu-central-1.amazonaws.com"
-    keyPrefix: "/"
-    accessKeyId: "my-access-key"
-    secretAccessKey: "my-secret-key"
 frontend:
   title: "Cockpit Design System"
   description: "Free Docs app powered by Editor.js ecosystemt"

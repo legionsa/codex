@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base theme tokens that work with dark mode */
+@layer base {
+  :root {
+    /* Light theme defaults */
+    --background-primary: #ffffff;
+    --background-secondary: #f8fafc;
+    --text-primary: #1a1a1a;
+    --text-secondary: #374151;
+  }
+
+  .dark {
+    --background-primary: #1a1a1a;
+    --background-secondary: #27272a;
+    --text-primary: #fafafa;
+    --text-secondary: #d1d5db;
+  }
+}
+
+/* Core styles */
+body {
+  @apply bg-[var(--background-primary)] text-[var(--text-primary)];
+}
+
+/* Editor blocks customization */
+.codex-editor {
+  @apply max-w-3xl mx-auto px-4;
+}
+
+.ce-block {
+  @apply mb-4;
+}
+
+.ce-header {
+  @apply font-bold;
+}
+
+h1.ce-header {
+  @apply text-3xl mb-6;
+}
+
+h2.ce-header {
+  @apply text-2xl mb-4;
+}
+
+h3.ce-header {
+  @apply text-xl mb-3;
+}
+
+.ce-paragraph {
+  @apply text-base leading-relaxed;
+}
+
+.ce-delimiter {
+  @apply my-6;
+}
+
+/* Code block styling */
+.ce-code {
+  @apply font-mono text-sm p-4 rounded-lg;
+  @apply bg-[var(--background-secondary)] text-[var(--text-primary)];
+}
+
+/* List styling */
+.cdx-list {
+  @apply pl-6;
+}
+
+.cdx-list__item {
+  @apply mb-2;
+}
+
+/* Image block styling */
+.image-tool {
+  @apply my-6;
+}
+
+.image-tool__caption {
+  @apply text-sm text-[var(--text-secondary)] mt-2;
+}

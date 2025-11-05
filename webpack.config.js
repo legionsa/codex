@@ -1,6 +1,10 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import tailwindcss from 'tailwindcss';
+import postcssImport from 'postcss-import';
+import postcssNesting from 'postcss-nesting';
+import autoprefixer from 'autoprefixer';
 
 /**
  * The __dirname CommonJS variables are not available in ES modules.
@@ -31,7 +35,10 @@ const babelLoader = {
 
 export default () => {
   return {
-    entry: './src/frontend/js/app.js',
+    entry: {
+      main: './src/frontend/js/app.js',
+      theme: './src/styles/tailwind.css',
+    },
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, './public/dist'),
@@ -58,6 +65,16 @@ export default () => {
             },
             {
               loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: {
+                    'postcss-import': {},
+                    'tailwindcss/nesting': {},
+                    'tailwindcss': {},
+                    'autoprefixer': {},
+                  }
+                },
+              },
             },
           ],
         },

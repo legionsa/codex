@@ -1,6 +1,9 @@
 // No inspection for unused var `css` because it's used for css bundle
 // eslint-disable-next-line no-unused-vars
 import '../styles/main.pcss';
+import '../../styles/tailwind.css';
+
+import ThemeToggle from './components/ThemeToggle';
 
 /**
  * Module Dispatcher
@@ -31,6 +34,7 @@ class Docs {
     this.page = new Page();
     this.extensions = new Extensions();
     this.sidebar = new Sidebar();
+    this.themeToggle = new ThemeToggle();
     if (window.config.hawkClientToken) {
       this.hawk = new HawkCatcher(window.config.hawkClientToken);
     }

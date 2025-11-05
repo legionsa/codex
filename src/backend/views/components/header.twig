@@ -1,27 +1,38 @@
-<header class="docs-header">
-  <a href="/" class="docs-header__logo">
-    {{ config.title | striptags }}
-  </a>
-  <ul class="docs-header__menu">
-    {% if isAuthorized == true %}
-      <li class="docs-header__menu-add docs-header__menu-add--desktop">
-        {% include 'components/button.twig' with {label: 'Add page', icon: 'plus', size: 'small', url: '/page/new'} %}
-      </li>
-      <li class="docs-header__menu-add docs-header__menu-add--mobile">
-        {% include 'components/button.twig' with {icon: 'plus', size: 'small', url: '/page/new'} %}
-      </li>
-    {% endif %}
-    {% for option in config.menu %}
-      <li>
-        <a class="docs-header__menu-link"
-          {% if option.uri %}
-            href="{{ option.uri }}"
-          {% else %}
-            href="/page/{{ option._id }}"
-          {% endif %}>
-          {{ option.title | striptags }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+<header class="fixed top-0 left-0 right-0 z-50 px-4 py-2 bg-[var(--background-primary)] border-b border-[var(--text-secondary)] border-opacity-10">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="/" class="text-lg font-bold text-[var(--text-primary)]">
+      {{ config.title | striptags }}
+    </a>
+    
+    <div class="flex items-center space-x-4">
+      <ul class="flex items-center space-x-4">
+        {% if isAuthorized == true %}
+          <li class="hidden md:block">
+            {% include 'components/button.twig' with {label: 'Add page', icon: 'plus', size: 'small', url: '/page/new'} %}
+          </li>
+          <li class="md:hidden">
+            {% include 'components/button.twig' with {icon: 'plus', size: 'small', url: '/page/new'} %}
+          </li>
+        {% endif %}
+        {% for option in config.menu %}
+          <li>
+            <a class="px-3 py-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+              {% if option.uri %}
+                href="{{ option.uri }}"
+              {% else %}
+                href="/page/{{ option._id }}"
+              {% endif %}>
+              {{ option.title | striptags }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      
+      {# Theme toggle button will be inserted here by ThemeToggle.js #}
+      <div id="theme-toggle-container"></div>
+    </div>
+  </div>
 </header>
+
+{# Add spacing below header to prevent content overlap #}
+<div class="h-16"></div>

@@ -1,6 +1,9 @@
 import EditorJS from '@editorjs/editorjs';
 
 /**
+ * Custom Block Tools
+ */
+/**
  * Block Tools for the Editor
  */
 import Header from '@editorjs/header';
@@ -48,12 +51,24 @@ export default class Editor {
           class: Image,
           inlineToolbar: true,
           config: {
-            types: 'image/*, video/mp4',
-            endpoints: {
-              byFile: '/api/transport/image',
-              byUrl: '/api/transport/fetch',
-            },
-          },
+            uploader: {
+              /**
+               * Disable file upload, only allow URL-based images
+               */
+              uploadByFile: null,
+              /**
+               * Custom URL-based uploader that just returns the URL
+               * @param {string} url - The URL to "upload"
+               * @returns {Promise<{success: number, file: {url: string}}>}
+               */
+              uploadByUrl: async (url) => {
+                return {
+                  success: 1,
+                  file: { url }
+                };
+              }
+            }
+          }
         },
 
         linkTool: {
